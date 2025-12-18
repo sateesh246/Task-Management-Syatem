@@ -1093,9 +1093,9 @@ The documentation is now complete and ready for screenshot integration. Please p
 
 ---
 
-**Developed by:** [Your Name]  
+**Developed by:** Sateesh Velaga  
 **Assessment Date:** December 2024  
 **Latest Update:** December 2024 - Profile System Enhancement  
-**Contact:** [Your Email]
+**Contact:** velaga.sateesh1@gmail.com
 
 *This project demonstrates full-stack development capabilities, complex business logic implementation, enterprise-grade software engineering practices, and continuous improvement through user experience enhancements.*
