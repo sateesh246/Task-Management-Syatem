@@ -1,7 +1,7 @@
 -- Enterprise Task Management System Database Schema
 -- This script creates the complete database structure for the task management system
 -- Author: Sateesh Velaga
--- Date: December 2024
+-- Date: December 2025
 
 DROP DATABASE IF EXISTS task_management;
 CREATE DATABASE task_management;

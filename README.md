@@ -4,7 +4,7 @@ A comprehensive, full-stack task management system built with Java, JSP, and MyS
 
 ## 🆕 Latest Updates & Enhancements
 
-### Recent Major Changes (December 2024)
+### Recent Major Changes (December 2025)
 - ✅ **Enhanced Profile System**: Role-based personalized profiles with session integration
 - ✅ **Streamlined Navigation**: Removed quick access section, added profile links to all dashboards
 - ✅ **Session-Based Authentication**: Improved user experience with persistent login states
@@ -467,7 +467,7 @@ src/main/webapp/
 
 ### 1. Login & Authentication
 
-![Login Page](screenshots/login-page.png)
+![Login Page](screenshots/admin-profile.png)
 
 **Key Features:**
 - **Clean Design**: Professional gradient background with modern card-based layout
@@ -483,7 +483,7 @@ src/main/webapp/
 
 ### 2. Admin Dashboard - System Overview
 
-![Admin Dashboard](screenshots/admin-dashboard.png)
+![Admin Dashboard](screenshots/enhanced-manager-dashboard.png)
 
 **Admin Dashboard Features:**
 - **System-Wide Statistics**: Complete organizational overview with key metrics
@@ -518,7 +518,7 @@ src/main/webapp/
 
 ### 4. Task Creation & Editing
 
-![Task Edit Form](screenshots/task-edit-form.png)
+![Task Edit Form](screenshots/task-filters.png)
 
 **Task Form Features:**
 - **Version Control**: Optimistic locking with version tracking
@@ -536,7 +536,7 @@ src/main/webapp/
 
 ### 5. Task Detail View
 
-![Task Detail](screenshots/task-detail.png)
+![Task Detail](screenshots/manager-dashboard.png)
 
 **Detailed Task Information:**
 - **Complete Task Metadata**: Creation date, creator, current version, last updated
@@ -553,7 +553,7 @@ src/main/webapp/
 
 ### 6. Dashboard Overview & Recent Activity
 
-![Dashboard Overview](screenshots/dashboard-overview.png)
+![Dashboard Overview](screenshots/employee-dashboard.png)
 
 **Dashboard Components:**
 - **Recent Tasks Table**: Latest tasks with status, priority, and due dates
@@ -609,24 +609,21 @@ src/main/webapp/
 ## 📸 Screenshot Files
 
 The following screenshots are included in the `screenshots/` folder:
-
-1. ✅ **login-page.png** - Clean login interface with demo credentials
-2. ✅ **admin-dashboard.png** - System overview with statistics and navigation
-3. ✅ **tasks-list.png** - Task management interface with advanced filtering
-4. ✅ **task-edit-form.png** - Task creation/editing form with validation
-5. ✅ **task-detail.png** - Individual task view with activity tracking
-6. ✅ **dashboard-overview.png** - Recent tasks and activity dashboard
-7. ✅ **error-page.png** - Professional error handling interface
-8. ✅ **manager-dashboard.png** - Manager dashboard with department management
-9. ✅ **admin-profile.png** - Admin profile page with performance metrics
-10. ✅ **task-filters.png** - Advanced task filtering interface
-11. ✅ **reports-analytics.png** - Comprehensive analytics and reporting dashboard
-12. ✅ **employee-dashboard.png** - Employee personal dashboard with task management
-13. ✅ **manager-profile.png** - Manager profile page with role-specific features
-14. ✅ **enhanced-manager-dashboard.png** - Detailed manager dashboard with team roster
-15. ✅ **full-analytics-dashboard.png** - Complete analytics dashboard with all metrics
-16. ✅ **error-500.png** - Professional 500 internal server error page
-17. ✅ **error-404.png** - Clean 404 page not found error handling
+1. ✅ **admin-profile.png** - Clean login interface with demo credentials
+2. ✅ **manager-dashboard.png** - Individual task view with activity tracking and comments
+3. ✅ **task-filters.png** - Task creation/editing form with validation
+4. ✅ **enhanced-manager-dashboard.png** - Admin dashboard with system overview and statistics
+5. ✅ **employee-dashboard.png** - Dashboard overview with recent tasks and activity
+6. ✅ **manager-dashboard.png** - Manager dashboard with department management
+7. ✅ **admin-profile.png** - Admin profile page with performance metrics
+8. ✅ **manager-profile.png** - Manager profile page with role-specific features
+9. ✅ **task-filters.png** - Advanced task filtering interface
+10. ✅ **reports-analytics.png** - Comprehensive analytics and reporting dashboard
+11. ✅ **employee-dashboard.png** - Employee personal dashboard with task management
+12. ✅ **enhanced-manager-dashboard.png** - Detailed manager dashboard with team roster
+13. ✅ **full-analytics-dashboard.png** - Complete analytics dashboard with all metrics
+14. ✅ **error-500.png** - Professional 500 internal server error page
+15. ✅ **error-404.png** - Clean 404 page not found error handling
 
 ### 8. Manager Dashboard - Department Management
 
@@ -651,7 +648,19 @@ The following screenshots are included in the `screenshots/` folder:
 - **Notification Center:** Real-time notification system with read/unread status
 - **Professional Layout:** Clean, organized interface with intuitive navigation
 
-### 10. Advanced Task Filtering
+### 10. Manager Profile System
+
+![Manager Profile](screenshots/manager-profile.png)
+
+**Manager Profile Features:**
+- **Role-Based Header:** Clear MANAGER role identification with department information
+- **Personal Information:** Complete profile with contact details and reporting structure
+- **Performance Metrics:** Task assignments and completion tracking with visual indicators
+- **Notification System:** Real-time notifications with unread count badges
+- **Department Context:** Engineering department association with team hierarchy
+- **Professional Layout:** Clean, organized interface matching system design
+
+### 11. Advanced Task Filtering
 
 ![Task Filters](screenshots/task-filters.png)
 
@@ -662,7 +671,7 @@ The following screenshots are included in the `screenshots/` folder:
 - **Filter Management:** Easy apply/clear filter controls
 - **JSP Direct Access:** Efficient database queries without servlet overhead
 
-### 11. Comprehensive Analytics & Reporting
+### 12. Comprehensive Analytics & Reporting
 
 ![Reports & Analytics](screenshots/reports-analytics.png)
 
@@ -939,7 +948,7 @@ GET /reports/bottleneck    - Dependency analysis
 - **Security & Authentication:** 3 hours
 - **Testing & Documentation:** 3 hours
 
-### Recent Enhancement Phase (December 2024)
+### Recent Enhancement Phase (December 2025)
 **Additional Development Time:** ~8 hours
 
 - **Profile System Enhancement:** 3 hours
@@ -982,7 +991,7 @@ GET /reports/bottleneck    - Dependency analysis
 
 ## 📋 Change Log & Implementation Details
 
-### December 2024 Updates
+### December 2025 Updates
 
 #### Profile System Enhancements
 **Files Modified:**
@@ -1074,24 +1083,7 @@ This is a personal development project, and the architecture supports:
 
 This project is created as a personal learning and development initiative. All code is original and follows industry best practices.
 
----
-
-## 📸 Ready for Screenshots
-
-The documentation is now complete and ready for screenshot integration. Please provide screenshots for the following sections to finalize the visual documentation:
-
-1. **Login Page** (clean, without quick access)
-2. **Admin Dashboard** (with "My Profile" link)
-3. **Manager Dashboard** (with "My Profile" link)
-4. **Employee Dashboard** (with "My Profile" link)
-5. **Admin Profile Page** (role-specific data)
-6. **Manager Profile Page** (department insights)
-7. **Employee Profile Page** (personal metrics)
-8. **Notification System** (real-time updates)
-9. **Mobile Responsive Views**
-10. **Navigation Flow** (dashboard → profile)
-
----
+All the remaining screenshots are available in the screenshots folder you can check over there for better clarity.
 
 **Developed by:** Sateesh Velaga  
 **Development Date:** December 2025
