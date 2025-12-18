@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - Task Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .task-card {
+            transition: transform 0.2s;
+            border-left: 4px solid #007bff;
+        }
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .priority-high { border-left-color: #dc3545; }
+        .priority-medium { border-left-color: #ffc107; }
+        .priority-low { border-left-color: #28a745; }
+        .filter-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tasks me-2"></i>Task Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="static-dashboard.html">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="static-tasks.html">
+                            <i class="fas fa-tasks me-1"></i>Tasks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks">
+                            <i class="fas fa-cog me-1"></i>Dynamic Tasks (Servlet)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="test">
+                            <i class="fas fa-heartbeat me-1"></i>System Status
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn btn-success" onclick="showCreateTaskModal()">
+                            <i class="fas fa-plus me-1"></i>New Task
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Static Tasks Page:</strong> This page shows sample tasks without requiring database connectivity. 
+                    Use this if the servlet-based dynamic pages are not working.
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Priority</label>
+                    <select class="form-select" id="priorityFilter">
+                        <option value="">All Priorities</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Department</label>
+                    <select class="form-select" id="departmentFilter">
+                        <option value="">All Departments</option>
+                        <option value="development">Development</option>
+                        <option value="design">Design</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="hr">Human Resources</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Search</label>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search tasks...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Grid -->
+        <div class="row" id="tasksContainer">
+            <!-- Task 1 -->
+            <div class="col-md-6 col-lg-4 mb-4 task-item" data-status="in-progress" data-priority="high" data-department="development">
+                <div class="card task-card priority-high h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">Update User Interface</h5>
+                            <span class="badge bg-danger">High</span>
+                        </div>
+                        <p class="card-text text-muted">Modernize the dashboard layout and improve user experience with new design patterns.</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>John Doe
+                                <i class="fas fa-calendar ms-3 me-1"></i>Due: Jan 15, 2024
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-warning">In Progress</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="viewTask(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="editTask(1)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="col-md-6 col-lg-4 mb-4 task-item" data-status="completed" data-priority="medium" data-department="development">
+                <div class="card task-card priority-medium h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">Database Optimization</h5>
+                            <span class="badge bg-warning">Medium</span>
+                        </div>
+                        <p class="card-text text-muted">Improve query performance and optimize database indexes for better response times.</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>Jane Smith
+                                <i class="fas fa-calendar ms-3 me-1"></i>Due: Jan 10, 2024
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Completed</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="viewTask(2)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="editTask(2)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="col-md-6 col-lg-4 mb-4 task-item" data-status="pending" data-priority="high" data-department="development">
+                <div class="card task-card priority-high h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">Security Audit</h5>
+                            <span class="badge bg-danger">High</span>
+                        </div>
+                        <p class="card-text text-muted">Comprehensive security review of authentication system and data protection measures.</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>Mike Johnson
+                                <i class="fas fa-calendar ms-3 me-1"></i>Due: Jan 20, 2024
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Pending</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="viewTask(3)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="editTask(3)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="col-md-6 col-lg-4 mb-4 task-item" data-status="in-progress" data-priority="low" data-department="design">
+                <div class="card task-card priority-low h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">API Documentation</h5>
+                            <span class="badge bg-success">Low</span>
+                        </div>
+                        <p class="card-text text-muted">Update REST API documentation with new endpoints and authentication methods.</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>Sarah Wilson
+                                <i class="fas fa-calendar ms-3 me-1"></i>Due: Jan 25, 2024
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-warning">In Progress</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="viewTask(4)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="editTask(4)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 5 -->
+            <div class="col-md-6 col-lg-4 mb-4 task-item" data-status="overdue" data-priority="high" data-department="marketing">
+                <div class="card task-card priority-high h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">Marketing Campaign</h5>
+                            <span class="badge bg-danger">High</span>
+                        </div>
+                        <p class="card-text text-muted">Launch new product marketing campaign across social media platforms.</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>Emily Davis
+                                <i class="fas fa-calendar ms-3 me-1"></i>Due: Jan 5, 2024
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-danger">Overdue</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="viewTask(5)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="editTask(5)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 6 -->
+            <div class="col-md-6 col-lg-4 mb-4 task-item" data-status="pending" data-priority="medium" data-department="hr">
+                <div class="card task-card priority-medium h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title">Employee Training</h5>
+                            <span class="badge bg-warning">Medium</span>
+                        </div>
+                        <p class="card-text text-muted">Organize quarterly training sessions for new software tools and processes.</p>
+                        <div class="mb-3">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>Robert Brown
+                                <i class="fas fa-calendar ms-3 me-1"></i>Due: Feb 1, 2024
+                            </small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">Pending</span>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-outline-primary" onclick="viewTask(6)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-outline-success" onclick="editTask(6)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Task Modal -->
+    <div class="modal fade" id="createTaskModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="createTaskForm">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label class="form-label">Task Title</label>
+                                    <input type="text" class="form-control" id="taskTitle" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Priority</label>
+                                    <select class="form-select" id="taskPriority">
+                                        <option value="low">Low</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Department</label>
+                                    <select class="form-select" id="taskDepartment">
+                                        <option value="development">Development</option>
+                                        <option value="design">Design</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="hr">Human Resources</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Due Date</label>
+                                    <input type="date" class="form-control" id="taskDueDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Assign To</label>
+                            <select class="form-select" id="taskAssignee">
+                                <option value="john-doe">John Doe</option>
+                                <option value="jane-smith">Jane Smith</option>
+                                <option value="mike-johnson">Mike Johnson</option>
+                                <option value="sarah-wilson">Sarah Wilson</option>
+                                <option value="emily-davis">Emily Davis</option>
+                                <option value="robert-brown">Robert Brown</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="createTask()">Create Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter functionality
+        function filterTasks() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const priorityFilter = document.getElementById('priorityFilter').value;
+            const departmentFilter = document.getElementById('departmentFilter').value;
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            
+            const tasks = document.querySelectorAll('.task-item');
+            
+            tasks.forEach(task => {
+                const status = task.dataset.status;
+                const priority = task.dataset.priority;
+                const department = task.dataset.department;
+                const title = task.querySelector('.card-title').textContent.toLowerCase();
+                const description = task.querySelector('.card-text').textContent.toLowerCase();
+                
+                const statusMatch = !statusFilter || status === statusFilter;
+                const priorityMatch = !priorityFilter || priority === priorityFilter;
+                const departmentMatch = !departmentFilter || department === departmentFilter;
+                const searchMatch = !searchInput || title.includes(searchInput) || description.includes(searchInput);
+                
+                if (statusMatch && priorityMatch && departmentMatch && searchMatch) {
+                    task.style.display = 'block';
+                } else {
+                    task.style.display = 'none';
+                }
+            });
+        }
+        
+        // Add event listeners for filters
+        document.getElementById('statusFilter').addEventListener('change', filterTasks);
+        document.getElementById('priorityFilter').addEventListener('change', filterTasks);
+        document.getElementById('departmentFilter').addEventListener('change', filterTasks);
+        document.getElementById('searchInput').addEventListener('input', filterTasks);
+        
+        // Modal functions
+        function showCreateTaskModal() {
+            new bootstrap.Modal(document.getElementById('createTaskModal')).show();
+        }
+        
+        function createTask() {
+            alert('Task creation functionality would be implemented here. This is a static demo.');
+            bootstrap.Modal.getInstance(document.getElementById('createTaskModal')).hide();
+        }
+        
+        function viewTask(id) {
+            alert(`View task ${id} - This would open the task detail page.`);
+        }
+        
+        function editTask(id) {
+            alert(`Edit task ${id} - This would open the task edit form.`);
+        }
+    </script>
+</body>
+</html>

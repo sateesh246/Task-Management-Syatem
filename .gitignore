@@ -1,0 +1,42 @@
+# Eclipse project files
+.metadata
+.project
+.classpath
+.settings/
+
+# Build directories
+bin/
+build/
+target/
+
+# IDE files
+.vscode/
+*.iml
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Java compiled files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Virtual machine crash logs
+hs_err_pid*
+
+# Temporary files
+*.tmp
+*.temp
