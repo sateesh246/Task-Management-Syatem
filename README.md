@@ -13,7 +13,7 @@ A comprehensive, full-stack task management system built with Java, JSP, and MyS
 
 ## 🎯 Project Overview
 
-This is a technical assessment project that demonstrates:
+This is a personal project that demonstrates:
 - **Full-stack development** with Java backend and JSP frontend
 - **Complex business logic** including workflow state machines and dependency management
 - **Role-based access control** with three distinct user roles
@@ -1058,7 +1058,7 @@ notifications = notificationDAO.getNotificationsForUser(userId, false, 50);
 
 ## 🤝 Contributing
 
-This is a technical assessment project, but the architecture supports:
+This is a personal development project, and the architecture supports:
 - **Modular Design:** Easy to add new features (demonstrated with profile enhancements)
 - **Clean Code:** Well-documented and maintainable (comprehensive README updates)
 - **Extensible:** Plugin architecture for custom workflows (session-based authentication)
@@ -1072,7 +1072,7 @@ This is a technical assessment project, but the architecture supports:
 
 ## 📄 License
 
-This project is created for technical assessment purposes. All code is original and follows industry best practices.
+This project is created as a personal learning and development initiative. All code is original and follows industry best practices.
 
 ---
 
@@ -1094,8 +1094,7 @@ The documentation is now complete and ready for screenshot integration. Please p
 ---
 
 **Developed by:** Sateesh Velaga  
-**Assessment Date:** December 2024  
-**Latest Update:** December 2024 - Profile System Enhancement  
+**Development Date:** December 2025
 **Contact:** velaga.sateesh1@gmail.com
 
-*This project demonstrates full-stack development capabilities, complex business logic implementation, enterprise-grade software engineering practices, and continuous improvement through user experience enhancements.*
+*This project showcases my passion for full-stack development, complex business logic implementation, enterprise-grade software engineering practices, and continuous improvement through user experience enhancements.*
